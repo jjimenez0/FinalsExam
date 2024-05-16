@@ -28,7 +28,7 @@ if file is None:
     st.text("Please upload an image file")
 else:
     img=Image.open(file)
-    st.img(image,use_column_width=True)
+    st.image(img,use_column_width=True)
     prediction=import_and_predict(img,model)
     #class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     class_names=['0', '1', '2', '3','4','5', '6', '7', '8', '9']
