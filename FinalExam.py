@@ -18,8 +18,8 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
 def import_and_predict(image_data,model):
-    size=(28,28)
-    image=ImageOps.fit(image_data,size)
+    size=(32,32)
+    image=ImageOps.fit(image_data,size,Image.Resampling.LANCZOS)
     img=np.asarray(image)
     img_reshape=img[np.newaxis,...]
     prediction=model.predict(img_reshape)
