@@ -18,20 +18,21 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
 def import_and_predict(image_data,model):
-    size=(32,32)
-    image=ImageOps.fit(image_data,size,Image.Resampling.LANCZOS)
-    img=np.asarray(image)
-    img_reshape=img[np.newaxis,...]
-    prediction=model.predict(img_reshape)
-    return prediction
+  	img = img_to_array(img)
+  	# reshape into a single sample with 3 channels
+  	img = img.reshape(3, 28, 28, 1)
+  	# prepare pixel data
+  	img = img.astype('float32')
+  	img = img / 255.0
+    result = numpy.argmax(model.predict(img), axis=1)
 
 if file is None:
     st.text("Please upload an image file")
 else:
-    image=Image.open(file)
-    st.image(image,use_column_width=True)
-    prediction=import_and_predict(image,model)
+    img=Image.open(file)
+    st.img(image,use_column_width=True)
+    prediction=import_and_predict(img,model)
     #class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     class_names=['0', '1', '2', '3','4','5', '6', '7', '8', '9']
-    string="OUTPUT : "+class_names[prediction]
+    string="OUTPUT : "+class_names[result]
     st.success(string)
