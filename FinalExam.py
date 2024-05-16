@@ -25,6 +25,7 @@ def import_and_predict(img,model):
     img = img.astype('float32')
     img = img / 255.0
     result = np.argmax(model.predict(img), axis=1)
+    return result
 
 if file is None:
     st.text("Please upload an image file")
