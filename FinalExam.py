@@ -18,7 +18,7 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
 def import_and_predict(image_data,model):
-    img = img_to_array(img)
+    img = np.asarray(img)
     img = img.reshape(3, 28, 28, 1)
     img = img.astype('float32')
     img = img / 255.0
