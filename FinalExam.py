@@ -23,7 +23,7 @@ def import_and_predict(img,model):
     img = np.asarray(img)
     img = img.reshape(3, 28, 28, 1)
     img = img.astype('float32')
-    img = img / 255.0
+    img = img - 255.0
     prediction=model.predict(img)
     return prediction
 
