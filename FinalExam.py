@@ -17,7 +17,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
-def import_and_predict(image_data,model):
+def import_and_predict(img,model):
     img = np.asarray(img)
     img = img.reshape(3, 28, 28, 1)
     img = img.astype('float32')
