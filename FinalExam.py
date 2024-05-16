@@ -26,7 +26,7 @@ def import_and_predict(img,model):
     img = img / 255.0
     predict = np.argmax(model.predict(img), axis=1)
     #result = predict[]
-    return result
+    return predict
 
 if file is None:
     st.text("Please upload an image file")
@@ -36,5 +36,5 @@ else:
     prediction=import_and_predict(img,model)
     #class_names=['T-shirt', 'Trouser', 'Pullover', 'Dress','Coat','Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Shoe']
     class_names=['0', '1', '2', '3','4','5', '6', '7', '8', '9']
-    string="OUTPUT : "+ class_names[result[0]]
+    string="OUTPUT : "+ class_names[predict[0]]
     st.success(string)
