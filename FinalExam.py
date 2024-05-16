@@ -20,6 +20,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 def import_and_predict(img,model):
     size=(28,28)
     img=ImageOps.fit(img,size,Image.Resampling.LANCZOS)
+    img = 255 - img
     img = np.asarray(img)
     img = img.reshape(3, 28, 28, 1)
     img = img.astype('float32')
