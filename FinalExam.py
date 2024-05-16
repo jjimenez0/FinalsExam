@@ -18,12 +18,10 @@ from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.preprocessing.image import img_to_array
 
 def import_and_predict(image_data,model):
-  	img = img_to_array(img)
-  	# reshape into a single sample with 3 channels
-  	img = img.reshape(3, 28, 28, 1)
-  	# prepare pixel data
-  	img = img.astype('float32')
-  	img = img / 255.0
+    img = img_to_array(img)
+    img = img.reshape(3, 28, 28, 1)
+    img = img.astype('float32')
+    img = img / 255.0
     result = numpy.argmax(model.predict(img), axis=1)
 
 if file is None:
